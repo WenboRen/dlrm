@@ -17,13 +17,13 @@ else
 fi
 
 if [[ $alg == post_local_sgd ]]; then
-    alg_option="--distributed-optimization --alg=post_local_sgd --local-steps=2 --initial-steps=60 --initial-step-method=single_process"
+    alg_option="--distributed-optimization --alg=post_local_sgd --local-steps=2 --initial-steps=90 --initial-step-method=single_process"
 elif [[ $alg == hierarchical_local_sgd ]]; then
-    alg_option="--distributed-optimization --alg=hierarchical_local_sgd --num-nodes=1 --nprocs-per-node=2 --local-sync-freq=4 --global-sync-freq=4"
+    alg_option="--distributed-optimization --alg=hierarchical_local_sgd --num-nodes=2 --nprocs-per-node=2 --local-sync-freq=2 --global-sync-freq=2"
 elif [[ $alg == noise_injection ]]; then
     alg_option="--distributed-optimization --alg=local_sgd --local-steps=1 --add-noise --noise-type gaussian --variance 0.001 --linear-variance-decay 0.01"
 elif [[ $alg == slow_momentum ]]; then
-    alg_option="--distributed-optimization --alg=local_sgd --local-steps=1 --slow-momentum --slow-momentum-factor=0.8 --slow-learning-rate=1.0 --inner-loop-steps 2"	
+    alg_option="--distributed-optimization --alg=local_sgd --local-steps=1 --slow-momentum --slow-momentum-factor=0.9 --slow-learning-rate=1.0 --inner-loop-steps 2"	
 else
     # default algorithm is local SGD
     alg_option="--distributed-optimization --alg=local_sgd --local-steps=2"
